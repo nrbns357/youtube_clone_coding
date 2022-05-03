@@ -11,9 +11,27 @@ const app = express(); //express function & express application 생성
 // request란?
 // 서버에 필요한 것들을 요청.
 
-const handleHome = () => console.loog("Somebody is trying to go home.");
+const handleHome = (req, res) => {
+  return res.send("<h1>I still love you.</h1>");
+  //   res.end();
+};
+
+const handleLogin = (req, res) => {
+  return res.send({ message: "Login here." });
+};
+
+const handleAbout = (req, res) => {
+  return res.send("About Here!");
+};
+
+const handleContact = (req, res) => {
+  return res.send("contact Here!");
+};
 
 app.get("/", handleHome);
+app.get("/login", handleLogin);
+app.get("/about", handleAbout);
+app.get("/contact", handleContact);
 
 const handleListening = () =>
   console.log(`Server listenting on port localhost${PORT}`);
